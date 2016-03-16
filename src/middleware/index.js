@@ -12,7 +12,7 @@ var requiresLogout = function(req,res,next){
 	next();
 };
 var requiresSecure = function(req,res,next){
-	if(req.headers['x-fowarded-proto'] != 'https'){
+	if(req.headers['x-forwarded-proto'] != 'https'){
 		return res.redirect('https://' + req.hostname + req.url);
 	}
 	next();
