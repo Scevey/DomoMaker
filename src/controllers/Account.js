@@ -11,7 +11,7 @@ var signupPage = function(req,res){
 	res.render('signup');
 };
 var logout = function(req,res){
-	
+	req.session.destroy();
 	res.redirect('/');
 };
 var login = function(req,res){
@@ -22,6 +22,7 @@ var login = function(req,res){
 		if(err|| !account){
 			return res.status(400).json({error: "Wrong username or password"});
 		}
+		req.session.account = account.toAPI();
 		res.json({redirect: '/maker'});
 	});
 };
@@ -37,7 +38,7 @@ var signup = function(req,res){
 			username: req.body.username,
 			salt: salt,
 			password: hash
-		}
+		};
 		var newAccount = Account.AccountModel(accountData);
 		
 		newAccount = new Account.AccountModel(accountData);
@@ -47,6 +48,7 @@ var signup = function(req,res){
 				console.log(err);
 				return res.status(400).json({error: 'An error occured'});
 			}
+			req.session.account = newAccount.toAPI();
 			res.json({redirect: '/maker'});
 		});
 	});

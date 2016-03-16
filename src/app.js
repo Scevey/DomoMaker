@@ -6,7 +6,7 @@ var favicon = require('serve-favicon'); //favicon library to handle favicon requ
 var cookieParser = require('cookie-parser'); //Library to parse cookies from the requests
 var bodyParser = require('body-parser'); //library to handle POST requests any information sent in an HTTP body
 var mongoose = require('mongoose'); //Mongoose is one of the most popular MongoDB libraries for node
-
+var session = require('express-session');
 var dbURL = process.env.MONGOLAB_URI || "mongodb://localhost/DomoMaker";
 //In MVC, you have 'routes' that line up URLs to controller methods
 var db = mongoose.connect(dbURL, function(err) {
@@ -39,6 +39,12 @@ app.use(bodyParser.json());
 //app.set sets one of the express config options
 //set up the view (V of MVC) to use jade (not shown in this example but needed for express to work)
 //You can use other view engines besides jade
+app.use(session({
+	key: "sessionid",
+	secret: 'Domo Arigato',
+	resave: true,
+	saveUninitialized: true
+}));
 app.set('view engine', 'jade');
 
 //set the views path to the template directory (not shown in this example but needed for express to work)
