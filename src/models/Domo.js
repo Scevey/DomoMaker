@@ -57,7 +57,7 @@ DomoSchema.statics.findByName = function(name, callback) {
         name: name
     };
 
-    return DomoModel.findOne(search, callback);
+    return DomoModel.find(search).select("name").exec(callback);
 };
 DomoModel = mongoose.model('Domo', DomoSchema);
 

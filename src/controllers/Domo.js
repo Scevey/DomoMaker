@@ -43,27 +43,13 @@ var deleteDomo = function(req,res){
 		owner: req.session.account._id
 	};
 	
-    Domo.findByName(domoData.name, function(err, doc) {
+    Domo.DomoModel.findOneAndRemove(domoData.name, function(err, doc) {
         //errs, handle them
         if(err) {
-            return res.json({err:err}); //if error, return it            
+            return res.json({err:"woops"}); //if error, return it            
         }
         
-        //if no matches, let them know (does not necessarily have to be an error since technically it worked correctly)
-        if(!doc) {
-            return res.json({error: "No Dogs found"});
-        }
-		
-		doc.remove(function(err) {
-			if(err) {
-				return res.json({err:err}); //if error, return it
-			}
-        
-        //return success
-			res.json({redirect: '/maker'});
-		});
-        //Save the newCat object to the database
-        //set the lastAdded cat to our newest cat object. This way we can update it dynamically
+		res.json({redirect: '/maker'});
     });
 };
 module.exports.makerPage = makerPage;
