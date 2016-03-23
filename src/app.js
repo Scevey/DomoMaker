@@ -32,7 +32,7 @@ var router = require('./router.js');
 
 //Port set by process.env.PORT environment variable.
 //If the process.env.PORT variable or the env.NODE_PORT variables do not exist, use port 3000    
-var port = process.env.PORT || process.env.NODE_PORT || 3000;
+var port = process.env.PORT || process.env.NODE_PORT || 8100;
 
 //call express to get an Express MVC server object
 var app = express();

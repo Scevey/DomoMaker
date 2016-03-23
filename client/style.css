@@ -50,7 +50,7 @@ nav:nth-child(1) {
 .domoForm {
     border: 2px solid #338acc;
     height: 35px;
-    width: 700px;
+    width: 950px;
     margin-top:0px;
     padding-top:10px;
     background-color: #55acee;
@@ -191,15 +191,17 @@ nav:nth-child(1) {
     -ms-transform: rotate(330deg);
     -webkit-transform: rotate(330deg); 
     transform: rotate(330deg);
+	
 }
 
 #domos {
-    width: 40%;
+    width: 50%;
     min-width: 400px;
     border: 2px solid #55acee;
     border-radius: 4px;
     margin: 0 auto;
     margin-top: 100px;
+
 }
 
 .domo {
@@ -249,6 +251,34 @@ h3.domoName {
 }
 
 h3.domoAge {
+    float:right;
+    text-align: left;
+    width: 100px;
+    font-weight: bold;
+    margin-right: 200px;
+    font-size: 1.5em;
+}
+#domoDelAge{
+	display: none;
+}
+#domoDelLevel{
+	display: none;
+}
+#domoDelName{
+	display: none;
+}
+#domoDelForm{
+	display:inline;
+	float:right;
+	margin-top: -50px;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+#doDomoDel{
+	display:inline;
+	margin-right: 40px;
+}
+h3.domoLevel {
     float:right;
     text-align: left;
     width: 100px;

@@ -29,10 +29,9 @@ $(document).ready(function() {
     
     $("#makeDomoSubmit").on("click", function(e) {
         e.preventDefault();
-    
         $("#domoMessage").animate({width:'hide'},350);
     
-        if($("#domoName").val() == '' || $("#domoAge").val() == '') {
+        if($("#domoName").val() == '' || $("#domoAge").val() == ''|| $("#domoLevel").val() == '') {
             handleError("RAWR! All fields are required");
             return false;
         }
@@ -41,5 +40,16 @@ $(document).ready(function() {
         
         return false;
     });
+	 $("#doDomoDelete").on("click", function(e) {
+		e.preventDefault();
+		$("#domoMessage").animate({width:'hide'},350);
     
+        if($("#domoDelName").val() == '' || $("#domoDelAge").val() == ''|| $("#domoDelLevel").val() == '') {
+            handleError("RAWR! All fields are required");
+            return false;
+        }
+        sendAjax($("#domoDelForm").attr("action"), $("#domoDelForm").serialize());
+        
+        return false;
+    });
 });

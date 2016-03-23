@@ -2,7 +2,9 @@ var _ = require('underscore');
 var models = require('../models');
 
 var Domo = models.Domo;
-
+var delName;
+var delAge;
+var delLevel
 var makerPage = function(req,res){
 	Domo.DomoModel.findByOwner(req.session.account._id, function(err, docs){
 		if(err){
@@ -14,11 +16,12 @@ var makerPage = function(req,res){
 };
 var makeDomo = function(req,res){
 	if(!req.body.name || !req.body.age){
-		return res.status(400).json({error: "RAWR! Both name and age are required"});
+		return res.status(400).json({error: "RAWR! name age and level are required"});
 	}
 	var domoData = {
 		name: req.body.name,
 		age: req.body.age,
+		level: req.body.level,
 		owner: req.session.account._id
 	};
 	
@@ -32,5 +35,23 @@ var makeDomo = function(req,res){
 		res.json({redirect: '/maker'});
 	});
 };
+var deleteDomo = function(req,res){
+	var domoData = {
+		name: req.body.name,
+		age: req.body.age,
+		level: req.body.level,
+		owner: req.session.account._id
+	};
+	
+    Domo.DomoModel.findOneAndRemove(domoData.name, function(err, doc) {
+        //errs, handle them
+        if(err) {
+            return res.json({err:"woops"}); //if error, return it            
+        }
+        
+		res.json({redirect: '/maker'});
+    });
+};
 module.exports.makerPage = makerPage;
 module.exports.make = makeDomo;
+module.exports.del = deleteDomo;
