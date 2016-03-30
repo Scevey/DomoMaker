@@ -22,7 +22,7 @@ var makeDomo = function(req,res){
 		name: req.body.name,
 		age: req.body.age,
 		level: req.body.level,
-		owner: req.session.account._id
+		owner: req.session.account._id 
 	};
 	
 	var newDomo = new Domo.DomoModel(domoData);
@@ -37,19 +37,31 @@ var makeDomo = function(req,res){
 };
 var deleteDomo = function(req,res){
 	var domoData = {
-		name: req.body.name,
-		age: req.body.age,
-		level: req.body.level,
-		owner: req.session.account._id
+		name: req.body.delName,
+		age: req.body.delAge,
+		level: req.body.delLevel,
+		owner: req.session.account._id,
+		id: req.body.delID
 	};
-	
-    Domo.DomoModel.findOneAndRemove(domoData.name, function(err, doc) {
+    Domo.DomoModel.findByID(req.body.delID, function(err, doc) {
         //errs, handle them
         if(err) {
-            return res.json({err:"woops"}); //if error, return it            
+            return res.json({err:err}); //if error, return it            
         }
         
-		res.json({redirect: '/maker'});
+        //if no matches, let them know (does not necessarily have to be an error since technically it worked correctly)
+        if(!doc) {
+            return res.json({error: "No Domos found"});
+        }
+		doc.remove(function(err) {
+			if(err) {
+				return res.json({err:err}); //if error, return it
+			}
+        
+        //return success
+			res.json({redirect: '/maker'});
+		});
+
     });
 };
 module.exports.makerPage = makerPage;

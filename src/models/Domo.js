@@ -41,13 +41,14 @@ DomoSchema.methods.toAPI = function(){
 	return{
 		name: this.name,
 		age: this.age,
-		level: this.level
+		level: this.level,
+		id: this._id
 	};
 };
 
 DomoSchema.statics.findByOwner = function(ownerId, callback){
 	var search = {
-		owner: mongoose.Types.ObjectId(ownerId),
+		owner: mongoose.Types.ObjectId(ownerId)
 	};
 	return DomoModel.find(search).select("name age level").exec(callback);
 };
@@ -57,7 +58,15 @@ DomoSchema.statics.findByName = function(name, callback) {
         name: name
     };
 
-    return DomoModel.find(search).select("name").exec(callback);
+    return DomoModel.findOne(search, callback);
+};
+DomoSchema.statics.findByID = function(tag, callback) {
+
+    var search = {
+        _id: tag
+    };
+
+    return DomoModel.findOne(search, callback);
 };
 DomoModel = mongoose.model('Domo', DomoSchema);
 

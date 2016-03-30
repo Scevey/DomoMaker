@@ -267,6 +267,9 @@ h3.domoAge {
 #domoDelName{
 	display: none;
 }
+#domoDelID{
+	display: none;
+}
 #domoDelForm{
 	display:inline;
 	float:right;
@@ -293,4 +296,8 @@ h3.domoLevel {
 
 .domo:last-child {
     margin-bottom:10px;
+}
+.domo .content {
+    display: none;
+    padding : 5px;
 }

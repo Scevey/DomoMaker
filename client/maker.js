@@ -40,7 +40,7 @@ $(document).ready(function() {
         
         return false;
     });
-	 $("#doDomoDelete").on("click", function(e) {
+	 $(".doDomoDelete").on("click", function(e) {
 		e.preventDefault();
 		$("#domoMessage").animate({width:'hide'},350);
     
@@ -52,4 +52,8 @@ $(document).ready(function() {
         
         return false;
     });
+    $('.domo').click(function() {
+        $(this).find('.content').slideToggle();
+    });
+	
 });
