@@ -56,4 +56,6 @@ $(document).ready(function() {
         $(this).find('.content').slideToggle();
     });
 	
+
 });
+>>>>>>> 27cea990726388f0bcadcf30481e54444bf6c8e5

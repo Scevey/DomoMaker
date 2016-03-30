@@ -61,8 +61,6 @@ var deleteDomo = function(req,res){
         //return success
 			res.json({redirect: '/maker'});
 		});
-
-    });
 };
 module.exports.makerPage = makerPage;
 module.exports.make = makeDomo;

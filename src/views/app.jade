@@ -37,6 +37,8 @@ block body
                   input#domoDelID(type="text", name="delID", value="#{val._id}")  				  
                   input(type="hidden",name="_csrf",value="#{csrfToken}") 
                   a.doDomoDelete(class="makeDomoSubmit", href="#") Delete
+                  input(type="hidden",name="_csrf",value="#{csrfToken}")
+                  a#doDomoDelete(class="makeDomoSubmit", href="#") Delete
   section#domoMessage
     img#speech(src="/assets/img/speech.png", alt="speech box")
     h3

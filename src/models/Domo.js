@@ -43,6 +43,7 @@ DomoSchema.methods.toAPI = function(){
 		age: this.age,
 		level: this.level,
 		id: this._id
+		level: this.level
 	};
 };
 
@@ -57,7 +58,6 @@ DomoSchema.statics.findByName = function(name, callback) {
     var search = {
         name: name
     };
-
     return DomoModel.findOne(search, callback);
 };
 DomoSchema.statics.findByID = function(tag, callback) {
