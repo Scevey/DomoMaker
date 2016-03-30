@@ -297,7 +297,3 @@ h3.domoLevel {
 .domo:last-child {
     margin-bottom:10px;
 }
-.domo .content {
-    display: none;
-    padding : 5px;
-}
